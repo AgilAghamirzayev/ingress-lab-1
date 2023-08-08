@@ -6,6 +6,8 @@ import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderDetailMessage {
     private Long orderId;
     private CardType cardType;

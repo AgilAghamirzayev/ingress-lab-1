@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ingress-lab-1.iml" filepath="$PROJECT_DIR$/ingress-lab-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/order-ms.main.iml" filepath="$PROJECT_DIR$/.idea/modules/order-ms.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ticket-ms.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ticket-ms.main.iml" />
     </modules>
   </component>
 </project>

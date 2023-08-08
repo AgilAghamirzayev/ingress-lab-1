@@ -24,27 +24,26 @@ public class OrderService {
     @Value("${rabbitmq.queue.order.name}")
     private String orderCreateQ;
 
-    private final OrderMapper orderMapper = OrderMapper.INSTANCE;
-
+    private final OrderMapper orderMapper;
     private final OrderRepository orderRepository;
-
     private final MessagePublisher messagePublisher;
 
 
     @Transactional
     public void createOrder(OrderRequest orderRequest) {
+        log.info("createOrder.START.  OrderRequest: {}", orderRequest);
         Order order = orderMapper.mapToOrderEntity(orderRequest);
         order.setUserId(1L); //TODO: get user id from request-header
         order.setOrderStatus(OrderStatus.CREATED);
         Order savedOrder = orderRepository.save(order);
 
-        OrderDetailMessage orderDetailMessage = orderMapper.mapToOrderDetailsMessage(savedOrder, orderRequest);
+        OrderDetailMessage orderDetailMessage = orderMapper.mapToOrderDetailsMessage(orderRequest, savedOrder.getId());
         log.info("OrderDetailMessage: {}", orderDetailMessage);
 
         messagePublisher.publishMessage(orderCreateQ, orderDetailMessage);
     }
 
-    public OrderResponse getOrdersByUserId(Long userId) {
+    public List<OrderResponse> getOrdersByUserId(Long userId) {
         List<Order> order = orderRepository.findAllByUserId(userId);
         return orderMapper.mapToOrderResponseList(order);
     }

@@ -2,15 +2,15 @@ package com.example.ticketms.model.queue;
 
 import com.example.ticketms.model.enums.CardType;
 import com.example.ticketms.model.enums.CurrencyType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
 @Builder
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderDetailMessage {
     private Long orderId;
     private CardType cardType;

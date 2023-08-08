@@ -11,5 +11,6 @@ import lombok.Data;
 public class OrderRequest {
     private CardType cardType;
     private CurrencyType currencyType;
-    private OrderStatus orderStatus;
+    private String finCode;
+    private String mobilNumber;
 }

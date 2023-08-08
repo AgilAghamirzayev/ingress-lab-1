@@ -12,18 +12,15 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
-    OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
     Order mapToOrderEntity(OrderRequest orderRequest);
 
 
     List<OrderResponse> mapToOrderResponseList(List<Order> order);
 
-    @Mapping(target = "orderId", source = "id")
-    @Mapping(target = "orderStatus", source = "orderStatus")
-    @Mapping(target = "cardType", source = "cardType")
-    @Mapping(target = "currencyType", source = "currencyType")
-    @Mapping(target = "finCode", source = "userDetails.finCode")
-    @Mapping(target = "mobilNumber", source = "userDetails.mobilNumber")
-    OrderDetailMessage mapToOrderDetailsMessage(Order savedOrder, OrderRequest orderRequest);
+    @Mapping(target = "cardType", source = "orderRequest.cardType")
+    @Mapping(target = "currencyType", source = "orderRequest.currencyType")
+    @Mapping(target = "finCode", source = "orderRequest.finCode")
+    @Mapping(target = "mobilNumber", source = "orderRequest.mobilNumber")
+    OrderDetailMessage mapToOrderDetailsMessage(OrderRequest orderRequest, Long orderId);
 }

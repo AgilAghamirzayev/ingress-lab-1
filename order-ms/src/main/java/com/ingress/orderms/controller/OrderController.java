@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1/orders")
@@ -21,7 +23,7 @@ public class OrderController {
 
     @GetMapping("/{user-id}")
     @ResponseStatus(HttpStatus.OK)
-    public OrderResponse getOrders(@PathVariable("user-id") Long userId) {
+    public List<OrderResponse> getOrders(@PathVariable("user-id") Long userId) {
         return orderService.getOrdersByUserId(userId);
     }
 }
