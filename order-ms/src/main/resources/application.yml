@@ -1,0 +1,13 @@
+
+
+spring:
+  rabbitmq:
+    addresses: localhost:5672
+    username: user
+    password: user
+
+
+rabbitmq:
+  queue:
+    order:
+      name: create_order_q
