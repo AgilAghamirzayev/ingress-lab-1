@@ -16,8 +16,7 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
-    private String cardNumber;
-    private LocalDate expirationDate;
-    private String cvv;
-    private CardType cardType;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "card_derail_id")
+    private CardDetail cardDetail;
 }
