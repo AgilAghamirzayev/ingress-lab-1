@@ -3,7 +3,10 @@ package com.ingress.cardms.entity;
 import com.ingress.cardms.entity.enums.CardType;
 import com.ingress.cardms.entity.enums.CurrencyType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -11,6 +14,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "card_details")
 public class CardDetail {
     @Id
